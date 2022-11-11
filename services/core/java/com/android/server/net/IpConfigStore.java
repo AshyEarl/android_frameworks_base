@@ -323,7 +323,9 @@ public class IpConfigStore {
                                 }
                                 // If the destination is a default IPv4 route, use the gateway
                                 // address unless already set.
-                                if (dest.getAddress() instanceof Inet4Address
+				if (dest == null) {
+                                    gatewayAddress = gateway;
+                                } else if (dest.getAddress() instanceof Inet4Address
                                         && dest.getPrefixLength() == 0 && gatewayAddress == null) {
                                     gatewayAddress = gateway;
                                 } else {
